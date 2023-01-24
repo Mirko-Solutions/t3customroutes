@@ -1,0 +1,3 @@
+routeEnhancers:
+  CustomRoutes:
+    type: RoutesResourceEnhancer
