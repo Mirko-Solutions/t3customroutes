@@ -20,16 +20,6 @@ class RoutesResourceEnhancer extends AbstractEnhancer implements RoutingEnhancer
     public const ENHANCER_NAME = 'RoutesResourceEnhancer';
 
     /**
-     * @var array
-     */
-    protected array $configuration;
-
-    public function __construct(array $configuration)
-    {
-        $this->configuration = $configuration;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function enhanceForMatching(RouteCollection $collection): void
