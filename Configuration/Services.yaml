@@ -3,3 +3,8 @@ services:
     autowire: true
     autoconfigure: true
     public: true
+
+  Mirko\T3customroutes\:
+    resource: '../Classes/*'
+
+

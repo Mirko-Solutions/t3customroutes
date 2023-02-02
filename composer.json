@@ -4,7 +4,7 @@
   "description": "TYPO3 extension used to register custom api endpoints",
   "homepage": "https://github.com/Mirko-Solutions/t3customroutes",
   "license": "GPL-2.0+",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [
     "TYPO3 CMS",
     "TYPO3",
@@ -12,23 +12,21 @@
   ],
   "require": {
     "php": ">=8.0.0",
-    "typo3/cms-backend": "^11.5",
-    "typo3/cms-core": "^11.5",
-    "typo3/cms-extbase": "^11.5",
-    "typo3/cms-fluid": "^11.5",
-    "typo3/cms-scheduler": "^11.5",
-    "symfony/routing": "^4.1 || ^5.0",
-    "symfony/expression-language": "^4.1 || ^5.0",
-    "symfony/http-foundation": "^4.2.9 || ^5.0",
+    "typo3/cms-core": "^11.5 || 12.*",
+    "typo3/cms-scheduler": "^11.5 || 12.*",
+    "symfony/routing": "^4.1 || ^5.0 || 6.*",
+    "symfony/expression-language": "^4.1 || ^5.0 || 6.*",
+    "symfony/http-foundation": "^4.2.9 || ^5.0 || 6.*",
     "symfony/psr-http-message-bridge": "^2.1",
-    "symfony/property-info": "^4.4 || ^5.0",
-    "symfony/mime": "^4.4 || ^5.0",
-    "symfony/cache": "^4.4 || ^5.0",
+    "symfony/property-info": "^4.4 || ^5.0 || 6.*",
+    "symfony/mime": "^4.4 || ^5.0 || 6.*",
+    "symfony/cache": "^4.4 || ^5.0 || 6.*",
     "phpdocumentor/reflection-docblock": "^5.1",
     "goldspecdigital/oooas": "^2.4",
     "doctrine/annotations": "^1.0"
   },
   "require-dev": {
+    "roave/security-advisories": "dev-latest",
     "friendsofphp/php-cs-fixer": "^2.1"
   },
   "autoload": {

@@ -42,10 +42,9 @@ class Bootstrap
     /**
      * Bootstrap constructor.
      */
-    public function __construct(
-        HttpFoundationFactory $httpFoundationFactory
-    ) {
-        $this->httpFoundationFactory = $httpFoundationFactory;
+    public function __construct()
+    {
+        $this->httpFoundationFactory = new HttpFoundationFactory();
         $this->response = new Response('php://temp', 200, ['Content-Type' => 'application/ld+json']);
     }
 
@@ -160,6 +159,7 @@ class Bootstrap
         }
 
         $classObj = GeneralUtility::makeInstance(RouteService::getControllerName($route));
+
         $callable = [$classObj, $methodName];
         if (is_callable($callable)) {
             $response = call_user_func_array($callable, $params);
