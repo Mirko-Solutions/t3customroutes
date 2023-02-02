@@ -8,7 +8,6 @@ use Throwable;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Mirko\T3customroutes\Dispatcher\Bootstrap;
@@ -28,8 +27,9 @@ class CustomRoutesRequestResolver implements MiddlewareInterface
                 'CustomRoutesResource',
                 $request->getQueryParams()
             )) {
-            return GeneralUtility::makeInstance(ObjectManager::class)
-                ->get(Bootstrap::class)
+            $container = GeneralUtility::getContainer();
+
+            return $container->get(Bootstrap::class)
                 ->process($this->cleanupRequest($request));
         }
         return $handler->handle($request);

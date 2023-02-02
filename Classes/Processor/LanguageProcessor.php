@@ -7,9 +7,7 @@ namespace Mirko\T3customroutes\Processor;
 use RuntimeException;
 use TYPO3\CMS\Core\Context\Context;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Extbase\Object\Exception;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpFoundation\Request;
 use TYPO3\CMS\Core\Context\LanguageAspectFactory;
@@ -20,7 +18,6 @@ class LanguageProcessor implements ProcessorInterface
      * @param Request $request
      * @param ResponseInterface $response
      * @return void
-     * @throws Exception
      */
     public function process(Request $request, ResponseInterface $response): void
     {
@@ -37,9 +34,8 @@ class LanguageProcessor implements ProcessorInterface
         $languageUid = (int)(!empty($languageHeader) ? array_shift($languageHeader) : 0);
         $language = $request->get('site') ? $request->get('site')->getLanguageById($languageUid) : null;
         if ($language) {
-            /** @var ObjectManager $objectManager */
-            $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-            $objectManager->get(Context::class)
+            $container = GeneralUtility::getContainer();
+            $container->get(Context::class)
                 ->setAspect('language', LanguageAspectFactory::createFromSiteLanguage($language));
             $GLOBALS['TYPO3_REQUEST'] = $GLOBALS['TYPO3_REQUEST']->withAttribute('language', $language);
         }
